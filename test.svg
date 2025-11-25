@@ -1,0 +1,63 @@
+<svg width="360" height="30" viewBox="0 0 360 30" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 流光渐变定义 -->
+    <linearGradient id="rainbow" x1="0%" y1="0%" x2="200%" y2="0%">
+      <stop offset="0%" stop-color="#ff0000"/>
+      <stop offset="15%" stop-color="#ff9900"/>
+      <stop offset="30%" stop-color="#ffff00"/>
+      <stop offset="45%" stop-color="#00ff00"/>
+      <stop offset="60%" stop-color="#00ffff"/>
+      <stop offset="75%" stop-color="#0000ff"/>
+      <stop offset="90%" stop-color="#9900ff"/>
+      <stop offset="100%" stop-color="#ff0000"/>
+      <animate attributeName="x1" from="0%" to="-100%" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="x2" from="200%" to="100%" dur="3s" repeatCount="indefinite" />
+    </linearGradient>
+
+    <!-- 圆角裁剪 -->
+    <clipPath id="r">
+      <rect width="360" height="30" rx="4" fill="#fff"/>
+    </clipPath>
+
+    <!-- 定义右侧动画：原地摇摆+微位移 -->
+    <style>
+      .rider-anim { animation: moveRight 2s ease-in-out infinite alternate; }
+      @keyframes moveRight {
+        0% { transform: translate(320px, 5px) rotate(0deg); }
+        100% { transform: translate(325px, 4px) rotate(5deg); }
+      }
+    </style>
+  </defs>
+
+  <!-- 背景区域 -->
+  <g clip-path="url(#r)">
+    <!-- 左侧红色背景 (宽度145，容纳长名字) -->
+    <rect width="145" height="30" fill="#8b0a1a"/>
+    <!-- 右侧青色背景 -->
+    <rect x="145" width="215" height="30" fill="#669999"/>
+    <!-- 分割线 -->
+    <rect x="145" width="2" height="30" fill="#fff" fill-opacity="0.2"/>
+  </g>
+
+  <!-- 文字层 -->
+  <g fill="#fff" font-family="Verdana, Geneva, sans-serif" text-anchor="middle">
+    <!-- 左侧文字 -->
+    <text x="72.5" y="20" font-size="11" font-weight="bold" text-shadow="0 1px 2px rgba(0,0,0,0.5)">&lt;LINUX DO&gt; Lucas</text>
+    
+    <!-- 右侧文字 (位置微调至240，给右边的蜗牛留出空间) -->
+    <text x="240" y="20" font-size="13" font-weight="bold" text-shadow="0 1px 2px rgba(0,0,0,0.3)">骑着蜗牛狂奔</text>
+  </g>
+
+  <!-- 动画层：直接应用样式中的绝对坐标，防止跑偏 -->
+  <g class="rider-anim">
+    <!-- 蜗牛 -->
+    <text x="0" y="18" font-size="20">🐌</text>
+    <!-- 男生 -->
+    <!--<text x="2" y="10" font-size="14">👦</text>-->
+    <!-- 尾气 -->
+    <text x="-8" y="18" font-size="10">💨</text>
+  </g>
+
+  <!-- 边框流光 -->
+  <rect x="1.5" y="1.5" width="357" height="27" rx="4" fill="none" stroke="url(#rainbow)" stroke-width="3"/>
+</svg>
